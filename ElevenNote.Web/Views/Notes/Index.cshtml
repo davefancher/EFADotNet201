@@ -6,14 +6,12 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p class="text-right">
+    @Html.ActionLink("Create New", "Create", "Notes", new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NoteId)
-        </th>
+        <th></th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -23,27 +21,29 @@
         <th>
             @Html.DisplayNameFor(model => model.CreatedUtc)
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.NoteId)
+            <div class="btn-group btn-group-xs">
+                <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>@Html.ActionLink("Edit", "Edit", new { id = item.NoteId })</li>
+                    <li>@Html.ActionLink("Delete", "Delete", new { id = item.NoteId })</li>
+                </ul>
+            </div>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
+            @Html.ActionLink(item.Title, "Details", new { id = item.NoteId })
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsStarred)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CreatedUtc)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.NoteId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.NoteId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.NoteId })
         </td>
     </tr>
 }

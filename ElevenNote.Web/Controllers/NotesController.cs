@@ -40,6 +40,7 @@ namespace ElevenNote.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(NoteCreateViewModel vm)
         {
             if (!ModelState.IsValid) return View(vm);
@@ -76,6 +77,7 @@ namespace ElevenNote.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(NoteEditViewModel vm)
         {
             if (!ModelState.IsValid) return View(vm);
@@ -85,6 +87,25 @@ namespace ElevenNote.Web.Controllers
                 ModelState.AddModelError("", "Unable to update note");
                 return View(vm);
             }
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        [ActionName("Delete")]
+        public ActionResult DeleteGet(int id)
+        {
+            var detail = _svc.Value.GetNoteById(id);
+
+            return View(detail);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            _svc.Value.DeleteNote(id);
 
             return RedirectToAction("Index");
         }
