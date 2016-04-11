@@ -68,7 +68,7 @@ namespace ElevenNote.Web.Controllers.WebApi
                 new NoteEditViewModel
                 {
                     NoteId = detail.NoteId,
-                    Title = detail.Content,
+                    Title = detail.Title,
                     Content = detail.Content,
                     IsStarred = state
                 };
