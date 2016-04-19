@@ -34,7 +34,7 @@ namespace ElevenNote.Web.Controllers.WebApi
         }
 
         [Route]
-        public bool Put(NoteCreateViewModel vm)
+        public bool Post(NoteCreateViewModel vm)
         {
             return _svc.Value.CreateNote(vm);
         }
@@ -46,7 +46,7 @@ namespace ElevenNote.Web.Controllers.WebApi
         }
 
         [Route("{id}")]
-        public bool Post(int id, NoteEditViewModel vm)
+        public bool Put(int id, NoteEditViewModel vm)
         {
             return _svc.Value.UpdateNote(vm);
         }
@@ -77,7 +77,7 @@ namespace ElevenNote.Web.Controllers.WebApi
         }
 
         [Route("{id}/Star")]
-        [HttpPut]
+        [HttpPost]
         public bool ToggleStarOn(int id)
         {
             return SetStarState(id, true);
