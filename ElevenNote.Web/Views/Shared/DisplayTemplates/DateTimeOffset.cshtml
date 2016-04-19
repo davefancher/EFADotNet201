@@ -1,0 +1,5 @@
+﻿@model System.DateTimeOffset?
+
+<span>
+    @(Model.HasValue ? Model.Value.LocalDateTime.ToString("G") : "-")
+</span>
