@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ElevenNote.Data
 {
+    [Table("Notes")]
     public class NoteEntity
     {
         [Key]
