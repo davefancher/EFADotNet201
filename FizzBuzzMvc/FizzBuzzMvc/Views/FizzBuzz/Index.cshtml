@@ -1,5 +1,19 @@
 ﻿@model IEnumerable<string>
 
+@*@functions {
+    private string ToFizzBuzz(int value)
+    {
+        var isDivisibleByFive = value % 5 == 0;
+        var isDivisibleByThree = value % 3 == 0;
+
+        if (isDivisibleByFive && isDivisibleByThree) return "FizzBuzz";
+        if (isDivisibleByFive) return "Buzz";
+        if (isDivisibleByThree) return "Fizz";
+
+        return value.ToString();
+    }
+}*@
+
 @{
     ViewBag.Title = "Index";
 }
@@ -7,6 +21,7 @@
 <h2>@ViewBag.Title</h2>
 
 <ul>
+@*@foreach(var fb in Enumerable.Range(1, 100).Select(ToFizzBuzz))*@
 @foreach(var fb in Model)
 {
     <li>@fb</li>

@@ -8,7 +8,7 @@ namespace FizzBuzzMvc.Controllers
 {
     public class FizzBuzzController : Controller
     {
-        public string ToFizzBuzz(int value)
+        private string ToFizzBuzz(int value)
         {
             var isDivisibleByFive = value % 5 == 0;
             var isDivisibleByThree = value % 3 == 0;
