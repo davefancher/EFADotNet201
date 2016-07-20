@@ -269,6 +269,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ElevenNote.Data\ElevenNote.Data.csproj">
+      <Project>{b0f9954e-4d90-42be-9bcd-50d824830dc7}</Project>
+      <Name>ElevenNote.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ElevenNote.Models\ElevenNote.Models.csproj">
       <Project>{ef56869d-f9d7-4473-a653-2ea33606e868}</Project>
       <Name>ElevenNote.Models</Name>
