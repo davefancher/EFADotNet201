@@ -1,14 +1,20 @@
 ﻿@model IEnumerable<ElevenNote.Models.NoteListItemViewModel>
-
 @{
     ViewBag.Title = "Index";
 }
-
 <h2>Index</h2>
-
 <p class="text-right">
     @Html.ActionLink("Create New", "Create", "Notes", new { @class = "btn btn-primary" })
 </p>
+@if (TempData.ContainsKey("SaveResult"))
+{
+    <div class="alert alert-success fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        @TempData["SaveResult"]
+    </div>
+}
 <table class="table">
     <tr>
         <th></th>
@@ -22,34 +28,32 @@
             @Html.DisplayNameFor(model => model.CreatedUtc)
         </th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            <div class="btn-group btn-group-xs">
-                <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li>@Html.ActionLink("Edit", "Edit", new { id = item.NoteId })</li>
-                    <li>@Html.ActionLink("Delete", "Delete", new { id = item.NoteId })</li>
-                </ul>
-            </div>
-        </td>
-        <td>
-            @Html.ActionLink(item.Title, "Details", new { id = item.NoteId })
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsStarred, new { Id = item.NoteId })
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedUtc)
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <div class="btn-group btn-group-xs">
+                    <button type="button" class="btn btn-xs btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Edit", "Edit", new { id = item.NoteId })</li>
+                        <li>@Html.ActionLink("Delete", "Delete", new { id = item.NoteId })</li>
+                    </ul>
+                </div>
+            </td>
+            <td>
+                @Html.ActionLink(item.Title, "Details", new { id = item.NoteId })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsStarred, new { Id = item.NoteId })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedUtc)
+            </td>
+        </tr>
+    }
 </table>
-
 @section scripts {
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
