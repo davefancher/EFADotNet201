@@ -90,7 +90,7 @@ namespace ElevenNote.Services
                 var entity =
                     ctx
                         .Notes
-                        .SingleOrDefault(e => e.OwnerId == _userId && e.NoteId == vm.NoteId);
+                        .Single(e => e.OwnerId == _userId && e.NoteId == vm.NoteId);
 
                 // TODO: Handle note not found
 
@@ -110,7 +110,7 @@ namespace ElevenNote.Services
                 var entity =
                     ctx
                         .Notes
-                        .SingleOrDefault(e => e.OwnerId == _userId && e.NoteId == noteId);
+                        .Single(e => e.OwnerId == _userId && e.NoteId == noteId);
 
                 // TODO: Handle note not found
 
