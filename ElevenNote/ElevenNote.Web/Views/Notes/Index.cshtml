@@ -69,8 +69,13 @@
                         url: "/api/notes/" + noteId + "/star",
                         data: null
                     })
-                    .done(function (r) { target.removeClass(); target.addClass("glyphicon " + (starSet ? "glyphicon-star-empty" : "glyphicon-star")); })
-                    .fail(function (r) { alert("Failed to change star status"); });
+                    .done(function (r) {
+                        target.removeClass();
+                        target.addClass("glyphicon " + (starSet ? "glyphicon-star-empty" : "glyphicon-star"));
+                    })
+                    .fail(function (r) {
+                        alert("Failed to change star status");
+                    });
                 });
         });
     </script>
