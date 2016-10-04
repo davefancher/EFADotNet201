@@ -4,14 +4,22 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GuessingGame.Models;
+using GuessingGame.Services;
 
 namespace GuessingGame.Controllers
 {
     public class GameController : Controller
     {
+        private readonly IRandomNumberGenerator _rng;
+
+        public GameController(IRandomNumberGenerator rng)
+        {
+            _rng = rng;
+        }
+
         public ActionResult Index()
         {
-            Session["Answer"] = new Random().Next(1, 10);
+            Session["Answer"] = _rng.GetNext(1, 10);
 
             return View();
         }
